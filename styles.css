@@ -71,7 +71,7 @@ header {
     justify-content: flex-end;
     align-items: center;
     padding: 20px 10%;
-    background-color: #11111b;
+    background-color: var(--bg-mantle);
 }
 
 .logo {
@@ -80,43 +80,157 @@ header {
     width: 10%;
     min-width: 50px;
     max-width: 80px;
-    background-color: #11111b;
 }
 
 .nav-links {
     list-style: none;
-    background-color: #11111b;
 }
 
 .nav-links li {
     display: inline-block;
     padding: 0px 20px;
-    background-color: #11111b;
 }
 
 .nav-links li a {
-    background-color: #11111b;
     transition: all 0.3s ease 0s;
 }
 
 .nav-links li a:hover {
-    color: #cba6f7;
+    color: var(--accent);
 }
 
+/* Button & CTA */
+button,
 .cta {
-    background-color: #11111b;
-}
-
-button {
     margin-left: 20px;
     padding: 9px 25px;
-    background-color: rgba(49, 50, 68,1);
+    background-color: var(--button-bg);
+    color: var(--button-text);
     border: none;
     border-radius: 50px;
     cursor: pointer;
     transition: all 0.3s ease 0s;
+    display: inline-block;
 }
 
-button:hover {
-    background-color: rgba(69, 71, 90,0.8);
+button:hover,
+.cta:hover {
+    background-color: var(--button-hover);
+    transform: translateY(-2px);
+}
+
+/* Modal Styles */
+.hidden {
+    display: none !important;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(8px);
+}
+
+.modal-content {
+    background-color: var(--bg-mantle);
+    padding: 50px 40px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    position: relative;
+    max-width: 90%;
+    width: 450px;
+    animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid var(--surface0);
+}
+
+@keyframes popIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 28px;
+    cursor: pointer;
+    color: var(--overlay0);
+    transition: color 0.2s;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+}
+
+.close-modal:hover {
+    color: var(--red);
+}
+
+.modal-content h1 {
+    color: var(--mauve);
+    margin-bottom: 10px;
+    font-size: 2rem;
+}
+
+.modal-content p {
+    color: var(--subtext0);
+    margin-bottom: 35px;
+}
+
+.contact-actions {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-direction: column;
+    /* Stack on mobile, row on larger if needed */
+}
+
+@media (min-width: 480px) {
+    .contact-actions {
+        flex-direction: row;
+    }
+}
+
+.contact-btn {
+    padding: 12px 30px;
+    border-radius: 50px;
+    color: var(--base);
+    /* Contrast text */
+    font-weight: 700;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-width: 140px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.contact-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.contact-btn.linkedin {
+    background-color: var(--blue);
+    color: var(--base);
+}
+
+.contact-btn.email {
+    background-color: var(--rosewater);
+    color: var(--base);
 }
